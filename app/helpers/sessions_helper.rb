@@ -21,5 +21,10 @@ module SessionsHelper
     session.delete(:user_id)
     @current_user = nil
   end
+  
+  # 渡されたユーザーがログイン済みユーザーであればtrueを返す
+  def current_user?(user)
+    user == current_user
+  end
 
 end
