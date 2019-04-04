@@ -45,10 +45,15 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
   
+  def edit_basic_info
+    @user = User.find(params[:id])
+  end
+  
+  
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password,
+      params.require(:user).permit(:name, :email, :department, :password, :work_time,:basic_time,
                                    :password_confirmation)
     end
     

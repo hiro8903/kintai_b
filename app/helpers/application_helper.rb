@@ -1,5 +1,5 @@
 module ApplicationHelper
-  
+
   # ページごとの完全なタイトルを返します。
   def full_title(page_title = '')
     base_title = "勤怠管理システム"
@@ -9,5 +9,4 @@ module ApplicationHelper
       page_title + " | " + base_title
     end
   end
-  
 end
