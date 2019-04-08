@@ -3,35 +3,64 @@
 <div>
   <table class="table-bordered table-condensed">
     <tr>
-      <td>時間管理表</td>
-      <td>指定勤務時間<%= @user.work_time %></td>
-      <td>基本時間<%= @user.basic_time %></td>
-      <td>月の初日</td>
+      <td><%= Date.today.strftime("%Y年%-m月") %> 時間管理表 </td>
+      <!--<td>指定勤務時間<!%= @user.work_time.strftime("%R") %></td>-->
+
+       <td>指定勤務時間<%= decimal_time(@user.work_time) %></td>
+       
+      <td colspan="3">基本時間<%= decimal_time(@user.basic_time) %></td>
+      <td>月の初日 <%=@first_day.strftime("%-m/%-d") %></td>
     </tr>
 
     <tr>
       <td>所属：<%= @user.department %></td>
       <td>氏名：<%= @user.name %></td>
-      <td>出勤日数：<%= @user.email %></td>
-      <td>月の末日</td>
+      <td>コード</td>
+      <td></td>
+      <td>出勤日数</td>
+      <td>月の末日 <%=@last_day.strftime("%-m/%-d") %></td>
     </tr>
   </table>
   
   <%= link_to "勤怠を編集","#", class: "btn btn-primary" %>
   <table class="table-bordered table-condensed">
-    <tr>
-      <td>時間管理表</td>
-      <td>指定勤務時間</td>
-      <td>基本時間</td>
-      <td>月の初日</td>
-    </tr>
+    <thead>
+      <tr>
+        <td rowspan = "2">日付</td>
+        <td rowspan = "2">曜日</td>
+        <td colspan = "3">出社</td>
+        <td colspan = "3">退社</td>
+        <td rowspan = "2">在社時間</td>
+        <td rowspan = "2">備考</td>
+      </tr>
 
-    <tr>
-      <td>所属</td>
-      <td>氏名：<%= @user.name %></td>
-      <td>出勤日数</td>
-      <td>月の末日</td>
-    </tr>
+      <tr>
+        <td>時</td>
+        <td>分</td>
+        <td></td>
+        <td>時</td>
+        <td>分</td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tbody>
+      <% (@first_day..@last_day).each do |day| %>
+        <tr>
+          <td><%= day.strftime("%-m/%-d") %></td>
+          <td><%= %w(日 月 火 水 木 金 土)[day.wday] %></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      <% end %>
+    </tbody>
+    </tbody> 
   </table>
   
   

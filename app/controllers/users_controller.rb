@@ -10,6 +10,8 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @first_day = Date.today.beginning_of_month
+    @last_day = Date.today.end_of_month
   end
 
   def new
