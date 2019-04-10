@@ -4,8 +4,6 @@
   <table class="table-bordered table-condensed">
     <tr>
       <td><%= Date.today.strftime("%Y年%-m月") %> 時間管理表 </td>
-      <!--<td>指定勤務時間<!%= @user.work_time.strftime("%R") %></td>-->
-
        <td>指定勤務時間<%= decimal_time(@user.work_time) %></td>
        
       <td colspan="3">基本時間<%= decimal_time(@user.basic_time) %></td>
